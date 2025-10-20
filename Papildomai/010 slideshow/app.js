@@ -1,60 +1,60 @@
-console.log('Labas slideshow!');
-
 let slideIndex = 1;
-let slideTimer; // čia saugosim timeout'ą
+let slideTimer;
+let isPaused = false; // stebim, ar sustabdyta
+
+const container = document.querySelector(".slideshow-container");
 
 showSlides(slideIndex);
 
-// rankinis perjungimas
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    showSlides(slideIndex += n, true); // true – reiškia rankinis keitimas
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n);
+    showSlides(slideIndex = n, true);
 }
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+function showSlides(n, manual = false) {
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
 
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
 
-    for (i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
+
+    for (let i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
 
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 
-    // išvalom seną laikmatį, kad nesidubliuotų
+    // sustabdom seną laikmatį
     clearTimeout(slideTimer);
 
-    // automatinis perėjimas kas 3 sek.
-    slideTimer = setTimeout(() => {
-        showSlides(slideIndex += 1);
-    }, 3000);
+    // jei rankinis keitimas, iš naujo startuojam laikmatį
+    if (!isPaused) {
+        slideTimer = setTimeout(() => showSlides(slideIndex += 1), 3000);
+    }
 }
 
 // sustabdyti automatinį slinkimą
 function stopSlides() {
+    isPaused = true;
     clearTimeout(slideTimer);
 }
 
 // tęsti automatinį slinkimą
 function startSlides() {
-    slideTimer = setTimeout(() => {
-        showSlides(slideIndex += 1);
-    }, 3000);
+    isPaused = false;
+    clearTimeout(slideTimer);
+    slideTimer = setTimeout(() => showSlides(slideIndex += 1), 3000);
 }
 
-// „hover pause“ – kai užvedi ant skaidrių konteinerio
-const container = document.querySelector(".slideshow-container");
-
+// užvedus pelę – sustoja
 container.addEventListener("mouseenter", stopSlides);
+// nuėmus pelę – tęsia
 container.addEventListener("mouseleave", startSlides);
