@@ -14,7 +14,7 @@ function currentSlide(n) {
     showSlides(slideIndex = n, true);
 }
 
-function showSlides(n, manual = false) {
+function showSlides(n) {
     const slides = document.getElementsByClassName("mySlides");
     const dots = document.getElementsByClassName("dot");
 
@@ -58,3 +58,6 @@ function startSlides() {
 container.addEventListener("mouseenter", stopSlides);
 // nuėmus pelę – tęsia
 container.addEventListener("mouseleave", startSlides);
+
+console.log(isPaused);
+
