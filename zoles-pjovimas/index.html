@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Profesionalus žolės pjovimas su traktoriuku Utenos krašte. Didelių sodybų priežiūra Anykščiuose, Molėtuose, Zarasuose, Ignalinoje. Apskaičiuokite kainą per 1 minutę.">
+    <title>Pjauname.lt – Žolės pjovimas Utenos krašte | Traktoriuko paslauga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18h18M5 18v-6M9 18v-9M13 18v-7M17 18v-5M21 18v-3" />
+                    </svg>
+                </div>
+                <span>pjauname.lt</span>
+            </a>
+            <nav class="nav-desktop">
+                <a href="#paslaugos">Paslaugos</a>
+                <a href="#skaiciuokle">Kainos</a>
+                <a href="#darbai">Darbai</a>
+                <a href="#duk">DUK</a>
+                <a href="#kontaktai">Kontaktai</a>
+                <a href="tel:+37060012345" class="btn-phone">+370 600 12345</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="nav-mobile" id="navMobile">
+            <a href="#paslaugos">Paslaugos</a>
+            <a href="#skaiciuokle">Kainos</a>
+            <a href="#darbai">Darbai</a>
+            <a href="#duk">DUK</a>
+            <a href="#kontaktai">Kontaktai</a>
+            <a href="tel:+37060012345" class="btn-phone">+370 600 12345</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Aptarnaujame visą Utenos apskritį</div>
+            <h1>Žolės pjovimas didelėms sodyboms</h1>
+            <p class="hero-subtitle">Profesionali traktoriuko paslauga Utenos, Anykščių, Molėtų, Zarasų ir Ignalinos
+                rajonuose. Greitas atvykimas, vienoda kokybė, sezoninės sutartys su 15% nuolaida.</p>
+            <div class="hero-actions">
+                <a href="#skaiciuokle" class="btn btn-primary">Apskaičiuoti kainą</a>
+                <a href="tel:+37060012345" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    Skambinti
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div><strong>150+</strong><span>aptarnautų sodybų</span></div>
+                <div><strong>4.9★</strong><span>vidutinis įvertinimas</span></div>
+                <div><strong>24h</strong><span>atvykimo laikas</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skaičiuoklė -->
+    <section id="skaiciuokle" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apskaičiuokite kainą per 1 minutę</h2>
+                <p>Pažymėkite savo sklypą žemėlapyje paspausdami ant kampų. Sistema automatiškai apskaičiuos plotą ir
+                    kainą.</p>
+            </div>
+
+            <div class="calculator-grid">
+                <!-- Žemėlapis -->
+                <div class="map-wrapper">
+                    <div class="map-container">
+                        <canvas id="mapCanvas" width="800" height="500"></canvas>
+                        <div class="map-instructions" id="mapInstructions">
+                            <strong>Kaip naudotis:</strong>
+                            <ol>
+                                <li>Spauskite ant žemėlapio, kad pažymėtumėte kampus</li>
+                                <li>Pažymėkite bent 3 taškus, kad uždarytumėte plotą</li>
+                                <li>Paspauskite "Baigti", kad apskaičiuotumėte plotą</li>
+                            </ol>
+                        </div>
+                        <div class="map-overlay-top">
+                            <div class="address-search">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
+                                <input type="text" placeholder="Įveskite adresą (pvz. Aušros g. 5, Utena)"
+                                    id="addressInput">
+                            </div>
+                        </div>
+                        <div class="map-controls">
+                            <button id="finishBtn" class="map-btn map-btn-primary" disabled>Baigti pažymėjimą</button>
+                            <button id="clearBtn" class="map-btn">Trinti</button>
+                            <button id="exampleBtn" class="map-btn">Pavyzdys</button>
+                        </div>
+                        <div class="map-legend">
+                            <span class="legend-dot"></span>
+                            <span id="pointCount">0 taškų</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rezultatai -->
+                <div class="result-card">
+                    <h3>Skaičiavimas</h3>
+
+                    <div class="result-row">
+                        <label>Plotas:</label>
+                        <div class="result-value">
+                            <span id="plotas">0,0</span>
+                            <small>arų</small>
+                        </div>
+                        <div class="result-hint" id="plotasHint">Pažymėkite sklypą</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zoles-bukle">Žolės būklė:</label>
+                        <select id="zoles-bukle">
+                            <option value="3">Reguliariai prižiūrima (3 €/aras)</option>
+                            <option value="4" selected>Apžėlusi, vidutinė (4 €/aras)</option>
+                            <option value="5">Stipriai apžėlusi (5 €/aras)</option>
+                            <option value="6">Aukšta žolė + krūmokšniai (6 €/aras)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="periodiskumas">Periodiškumas:</label>
+                        <select id="periodiskumas">
+                            <option value="1">Vienkartinis pjovimas</option>
+                            <option value="0.85" selected>Sezoninė sutartis (-15%)</option>
+                            <option value="0.80">Metinė sutartis (-20%)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="lapuValymas">
+                            <span>Pridėti lapų valymą (+30%)</span>
+                        </label>
+                    </div>
+
+                    <div class="result-total">
+                        <div class="result-total-label">Bendra kaina:</div>
+                        <div class="result-total-value">
+                            <span id="kaina">0</span>
+                            <small>€</small>
+                        </div>
+                        <div class="result-savings" id="savings"></div>
+                    </div>
+
+                    <button class="btn btn-primary btn-full" id="orderBtn" disabled>
+                        Užsakyti šią paslaugą
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12,5 19,12 12,19" />
+                        </svg>
+                    </button>
+
+                    <p class="result-disclaimer">* Galutinė kaina patvirtinama po objekto apžiūros. Mažiausias užsakymas
+                        – 50 €.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paslaugos -->
+    <section id="paslaugos" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kodėl renkasi mus</h2>
+                <p>Specializuojamės būtent didelių plotų priežiūroje – ten, kur paprastas vejapjovės nepakanka</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12,6 12,12 16,14" />
+                        </svg>
+                    </div>
+                    <h3>Greitas atvykimas</h3>
+                    <p>Per 24-48 val. nuo užklausos visoje Utenos apskrityje. Skubiems atvejams – tą pačią dieną.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 18h18M5 18v-6M9 18v-9M13 18v-7M17 18v-5M21 18v-3" />
+                        </svg>
+                    </div>
+                    <h3>Profesionali technika</h3>
+                    <p>Sodo traktoriukas su 1.2 m pločio pjaunamąja. Nuo 1 hektaro per valandą ir lygesnio rezultato
+                        nesiūlome jokios alternatyvos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <h3>Sezoninės sutartys</h3>
+                    <p>Pjauname kas 2 savaites be Jūsų rūpesčio – 15% nuolaida. Atvykstame net ir Jums nesant namuose.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22,4 12,14.01 9,11.01" />
+                        </svg>
+                    </div>
+                    <h3>Garantuota kokybė</h3>
+                    <p>Jei rezultatu nepatenkinti – pataisome nemokamai per 24 val. Dirbame su rašytinėmis sutartimis.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <h3>Skaidri kainodara</h3>
+                    <p>Kaina už arą fiksuota – jokių paslėptų mokesčių. Dideliems sklypams – papildomos nuolaidos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+                    <h3>Vietinė komanda</h3>
+                    <p>Esame iš Utenos – pažįstame regiono kelius, sodybas ir specifiką. Kalbame Jūsų kalba.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Darbai -->
+    <section id="darbai" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mūsų darbai</h2>
+                <p>Pasirinkti pavyzdžiai iš pastarųjų sezonų</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #97C459, #639922);">
+                        <span class="portfolio-tag">35 arų</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Sodyba prie Tauragno ež.</h4>
+                        <p>Sezoninė sutartis · 12 pjovimų</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #c0dd97, #97C459);">
+                        <span class="portfolio-tag">22 arų</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Vasarnamis Sartų ež. apylinkėse</h4>
+                        <p>Vienkartinis · stipriai apžėlusi</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #639922, #3B6D11);">
+                        <span class="portfolio-tag">85 arų</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Įmonės teritorija Anykščiuose</h4>
+                        <p>Metinė sutartis · 16 pjovimų</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #97C459, #3B6D11);">
+                        <span class="portfolio-tag">45 arų</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Kaimo turizmo sodyba Molėtuose</h4>
+                        <p>Sezoninė sutartis · papildomai lapų valymas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atsiliepimai -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Klientų atsiliepimai</h2>
+                <p>Iš viso 47 atsiliepimai · vidutinis įvertinimas 4.9★</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Labai patenkinti paslauga. Atvyko sutartu laiku, padarė viską kokybiškai. Sezoninę sutartį
+                        pratęsiame ir kitiems metams."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RJ</div>
+                        <div>
+                            <strong>Rimas J.</strong>
+                            <span>Tauragnai</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Turėjome stipriai apžėlusią sodybą prie ežero – nieks nesiėmė. Šie vyrukai per dieną viską
+                        sutvarkė. Rekomenduoju."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AG</div>
+                        <div>
+                            <strong>Asta G.</strong>
+                            <span>Zarasai</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Skaidri kaina, profesionalus aptarnavimas. Naudojuosi paslauga jau antrą sezoną. Kaina tikrai
+                        konkurencinga."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div>
+                            <strong>Mindaugas K.</strong>
+                            <span>Anykščiai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DUK -->
+    <section id="duk" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dažniausiai užduodami klausimai</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Kokio dydžio plotus aptarnaujate?</summary>
+                    <p>Specializuojamės nuo 15 arų plotų. Mažesniems plotams traktoriukas neturi prasmės –
+                        rekomenduojame trimerinę paslaugą. Maksimalus plotas neribojamas – aptarnavome ir 5 hektarų
+                        teritorijas.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Ar reikia mano dalyvavimo pjovimo metu?</summary>
+                    <p>Ne, sezoninių sutarčių klientams visiškai nereikia. Atvykstame sutartu grafiku, atliekame darbus
+                        ir išvykstame. Apie atvykimą informuojame iš anksto SMS žinute.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Kada geriausia pradėti sezonine sutartį?</summary>
+                    <p>Optimaliausias laikas – kovo–balandžio mėnesiai. Pirmas pjovimas paprastai vyksta gegužės
+                        pradžioje, kai žolė pasiekia 10–15 cm aukštį.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Ar pjaunate ant nelygaus reljefo?</summary>
+                    <p>Taip, mūsų traktoriukas pritaikytas dirbti iki 15° nuolydžio. Stipriai nelygiose vietose (statūs
+                        šlaitai, grioviai) papildomai naudojame trimerį – tai įtraukta į kainą.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Ką daryti su nupjauta žole?</summary>
+                    <p>Pagal nutylėjimą paliekame nupjautą žolę vietoje (mulčiavimas) – tai natūrali trąša. Jei norite,
+                        kad žolę išvežtume, tai papildoma paslauga (3 €/aras).</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Kokiose teritorijose dirbate?</summary>
+                    <p>Aptarnaujame visą Utenos apskritį: Utenos, Anykščių, Molėtų, Zarasų, Ignalinos rajonus ir
+                        Visagino savivaldybę. Į kitus rajonus vykstame nuo 50 arų plotų.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontaktai -->
+    <section id="kontaktai" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Susisiekite su mumis</h2>
+                <p>Atsakome per 2 valandas darbo dienomis</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Telefonas</strong>
+                            <a href="tel:+37060012345">+370 600 12345</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>El. paštas</strong>
+                            <a href="mailto:info@pjauname.lt">info@pjauname.lt</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Bazė</strong>
+                            <span>Utena, Aukštaitija</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12,6 12,12 16,14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Darbo laikas</strong>
+                            <span>I–VI: 7:00 – 19:00</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Vardas</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefonas</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">El. paštas</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Žinutė</label>
+                        <textarea id="message" name="message" rows="4"
+                            placeholder="Aprašykite savo objektą: vietovė, plotas, žolės būklė..."></textarea>
+                    </div>
+                    <input type="hidden" id="hiddenPlotas" name="plotas">
+                    <input type="hidden" id="hiddenKaina" name="kaina">
+                    <button type="submit" class="btn btn-primary btn-full">Siųsti užklausą</button>
+                    <p class="form-disclaimer">Jūsų duomenys saugūs ir nebus perduoti tretiems asmenims.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo logo-footer">
+                        <div class="logo-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18h18M5 18v-6M9 18v-9M13 18v-7M17 18v-5M21 18v-3" />
+                            </svg>
+                        </div>
+                        <span>pjauname.lt</span>
+                    </a>
+                    <p>Profesionalus žolės pjovimas didelėms sodyboms Utenos krašte. Aukštaitijos regiono specialistai.
+                    </p>
+                </div>
+                <div>
+                    <h5>Aptarnaujami miestai</h5>
+                    <ul>
+                        <li><a href="#">Utena</a></li>
+                        <li><a href="#">Anykščiai</a></li>
+                        <li><a href="#">Molėtai</a></li>
+                        <li><a href="#">Zarasai</a></li>
+                        <li><a href="#">Ignalina</a></li>
+                        <li><a href="#">Visaginas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Paslaugos</h5>
+                    <ul>
+                        <li><a href="#">Žolės pjovimas</a></li>
+                        <li><a href="#">Sezoninės sutartys</a></li>
+                        <li><a href="#">Lapų valymas</a></li>
+                        <li><a href="#">Krūmokšnių pjovimas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Kontaktai</h5>
+                    <ul>
+                        <li><a href="tel:+37060012345">+370 600 12345</a></li>
+                        <li><a href="mailto:info@pjauname.lt">info@pjauname.lt</a></li>
+                        <li>Utena, Aukštaitija</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 pjauname.lt – Visos teisės saugomos</span>
+                <div class="footer-links">
+                    <a href="#">Privatumo politika</a>
+                    <a href="#">Taisyklės</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast žinučių -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

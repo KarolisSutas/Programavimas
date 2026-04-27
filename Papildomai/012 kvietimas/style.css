@@ -1,0 +1,153 @@
+.invitation {
+    width: 148mm;
+    height: 210mm;
+    position: relative;
+}
+
+.tortas {
+    position: absolute;
+    top: 41%;
+    left: 31%;
+    transform: translate(-50%, -50%);
+    width: 140mm;
+    height: auto;
+    background: transparent;
+}
+
+h1 {
+    position: absolute;
+    top: 1%;
+    left:31%;
+    transform: translateX(-50%);
+    color: #1c407a;
+    font-family: "Titan One", sans-serif;
+    z-index: 1;
+    font-size: 46px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+h3 {
+    color: #1c407a;
+    font-family: "Gloria Hallelujah", cursive;
+    z-index: 1;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+span {
+    color: #4b3e20;
+    font-family: "Gloria Hallelujah", cursive;
+    z-index: 1;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+}
+
+.vardas {
+    position: absolute;
+    top: 133px;
+    left: 40px;
+    color: #1c407a;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pakviestas {
+    position: absolute;
+    top: 133px;
+    left: 95px;
+    font-size: 18px;
+}
+
+.text-kvietimas {
+    position: absolute;
+    width: 35%;
+    top: 18%;
+    left: 40px;
+    line-height: 1.2rem;
+}
+
+
+.kada {
+    position: absolute;
+    top: 233px;
+    left: 40px;
+    
+}
+
+.data {
+    position: absolute;
+    top: 253px;
+    left: 90px;
+    line-height: 1.2;
+}
+.kur {
+    position: absolute;
+    top: 275px;
+    left: 40px;
+}
+
+.sale {
+    position: absolute;
+    top: 289px;
+    left: 83px;
+}
+
+.adresas {
+    position: absolute;
+    top: 305px;
+    left: 40px;
+}
+
+.gatve {
+    position: absolute;
+    top: 319px;
+    left: 110px;
+}
+
+.lauksiu {
+    position: absolute;
+    top: 340px;
+    left: 40px;
+    color: #4b3e20;
+    font-size: 16px;
+
+}
+
+/* .findusas {
+    position: absolute;
+    top: 575px;
+    left: 465px;
+    mix-blend-mode: multiply;
+    filter: brightness(1.1) contrast(0.9);
+    z-index: 3;
+} */
+
+.covercat {
+    position: absolute;
+    top: 626px;
+    left: 390px;
+}
+
+.parasas {
+    position: absolute;
+    top: 700px;
+    left: 435px;
+    font-family: "Gloria Hallelujah", cursive;
+    font-size: 24px;
+    z-index: 2;
+}
+
+@media print {
+    body {
+        margin: 0;
+    }
+    .invitation {
+        width: 148mm;
+        height: 210mm;
+        page-break-after: always;
+    }
+}
